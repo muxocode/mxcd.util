@@ -3,3 +3,7 @@
 ################################################################################
 
 /.vs/mxcd.util
+/src/mxcd.util/bin/Debug/netstandard2.0
+/src/mxcd.util/obj
+/test/mxcd.util.test/bin/Debug/netcoreapp3.0
+/test/mxcd.util.test/obj

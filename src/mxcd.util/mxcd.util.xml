@@ -1,0 +1,377 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>mxcd.util</name>
+    </assembly>
+    <members>
+        <member name="T:mxcd.util.enums.UtilEnums">
+            <summary>
+            Enums for util
+            </summary>
+        </member>
+        <member name="T:mxcd.util.enums.UtilEnums.Encode">
+            <summary>
+            Tipos de codificación de cadena
+            </summary>
+        </member>
+        <member name="F:mxcd.util.enums.UtilEnums.Encode.UTF8">
+            <summary>
+            UTF8
+            </summary>
+        </member>
+        <member name="F:mxcd.util.enums.UtilEnums.Encode.Base64">
+            <summary>
+            Base64
+            </summary>
+        </member>
+        <member name="F:mxcd.util.enums.UtilEnums.Encode.ASCII">
+            <summary>
+            ASCII
+            </summary>
+        </member>
+        <member name="F:mxcd.util.enums.UtilEnums.Encode.Bit">
+            <summary>
+            Bit
+            </summary>
+        </member>
+        <member name="T:mxcd.util.exception.UtilException">
+            <summary>
+            Excepción genérica
+            </summary>
+        </member>
+        <member name="M:mxcd.util.exception.UtilException.#ctor(System.String,System.Exception)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="Mensaje"></param>
+            <param name="Excepcion"></param>
+        </member>
+        <member name="T:mxcd.util.entity.EntityUtil">
+            <summary>
+            Utils for objects
+            </summary>
+        </member>
+        <member name="M:mxcd.util.entity.EntityUtil.GetKeysValues``1(``0,System.Boolean,System.Boolean,System.Collections.Generic.IEnumerable{System.String})">
+            <summary>
+            Get all keys and respected values
+            </summary>
+            <typeparam name="T">Type</typeparam>
+            <param name="entity">enity</param>
+            <param name="includeProps">if props are included, default:true</param>
+            <param name="includeFields">if fields are included, default:false</param>
+            <param name="excludedNames">Fields or props names that will be omitted</param>
+            <returns></returns>
+        </member>
+        <member name="F:mxcd.util.sql.ComparationType.Default">
+            
+             Default value
+            
+        </member>
+        <member name="M:mxcd.util.sql.SqlExpressionUtil.ToSql``2(System.Linq.Expressions.Expression{System.Func{``0,``1}})">
+            <summary>
+            Obtiene el SQL string selection
+            </summary>
+            <typeparam name="T">Tipo de la entidad</typeparam>
+            <typeparam name="TResult">Tipo de la selección</typeparam>
+            <param name="expression">Expresión</param>
+            <returns></returns>
+        </member>
+        <member name="M:mxcd.util.sql.SqlExpressionUtil.ToSql``1(System.Linq.Expressions.Expression{System.Func{``0,System.Boolean}})">
+            <summary>
+            Obtiene el SQL string expression
+            </summary>
+            <typeparam name="T">Tipo de la entidad</typeparam>
+            <param name="expression">Expresión</param>
+            <returns></returns>
+        </member>
+        <member name="M:mxcd.util.sql.SqlUtil.ToSql``1(``0)">
+            <summary>
+            Converts the current value into a sql value
+            </summary>
+            <typeparam name="T">Types</typeparam>
+            <param name="val">Value</param>
+            <returns></returns>
+        </member>
+        <member name="M:mxcd.util.sql.SqlUtil.ToSql(System.Object)">
+            <summary>
+            Converts the current value into a sql value
+            </summary>
+            <param name="val">Value</param>
+            <returns></returns>
+        </member>
+        <member name="M:mxcd.util.sql.SqlUtil.ToSql(System.Nullable{System.Int32})">
+            <summary>
+            Converts the current value into a sql value
+            </summary>
+            <param name="val">Value</param>
+            <returns></returns>
+        </member>
+        <member name="M:mxcd.util.sql.SqlUtil.ToSql(System.Nullable{System.Int16})">
+            <summary>
+            Converts the current value into a sql value
+            </summary>
+            <param name="val">Value</param>
+            <returns></returns>
+        </member>
+        <member name="M:mxcd.util.sql.SqlUtil.ToSql(System.Nullable{System.Int64})">
+            <summary>
+            Converts the current value into a sql value
+            </summary>
+            <param name="val">Value</param>
+            <returns></returns>
+        </member>
+        <member name="M:mxcd.util.sql.SqlUtil.ToSql(System.Nullable{System.Decimal})">
+            <summary>
+            Converts the current value into a sql value
+            </summary>
+            <param name="val">Value</param>
+            <returns></returns>
+        </member>
+        <member name="M:mxcd.util.sql.SqlUtil.ToSql(System.Nullable{System.Double})">
+            <summary>
+            Converts the current value into a sql value
+            </summary>
+            <param name="val">Value</param>
+            <returns></returns>
+        </member>
+        <member name="M:mxcd.util.sql.SqlUtil.ToSql(System.Nullable{System.Single})">
+            <summary>
+            Converts the current value into a sql value
+            </summary>
+            <param name="val">Value</param>
+            <returns></returns>
+        </member>
+        <member name="M:mxcd.util.sql.SqlUtil.ToSql``2(System.Linq.Expressions.Expression{System.Func{``0,``1}})">
+            <summary>
+            Converts the current value into a sql value
+            </summary>
+            <param name="val">Value</param>
+            <returns></returns>
+        </member>
+        <member name="M:mxcd.util.sql.SqlUtil.ToSql``1(System.Linq.Expressions.Expression{System.Func{``0,System.Boolean}})">
+            <summary>
+            Converts the current value into a sql value
+            </summary>
+            <param name="val">Value</param>
+            <returns></returns>
+        </member>
+        <member name="M:mxcd.util.sql.SqlValue.GetValue``1(``0)">
+            <summary>
+            Gets sql value from an object
+            </summary>
+            <param name="Obj">Objet or value</param>
+            <returns></returns>
+        </member>
+        <member name="T:mxcd.util.statistics.StatisticsFunctions">
+            <summary>
+            Funciones matemáticas
+            </summary>
+        </member>
+        <member name="M:mxcd.util.statistics.StatisticsFunctions.TypicalDeviation(System.Collections.Generic.IEnumerable{System.Decimal})">
+            <summary>
+            Typical deviation
+            </summary>
+            <param name="list"></param>
+            <returns></returns>
+        </member>
+        <member name="M:mxcd.util.statistics.StatisticsFunctions.TypicalDeviation(System.Collections.Generic.IEnumerable{System.Int32})">
+            <summary>
+            Typical deviation
+            </summary>
+            <param name="list"></param>
+            <returns></returns>
+        </member>
+        <member name="M:mxcd.util.statistics.StatisticsFunctions.TypicalDeviation(System.Collections.Generic.IEnumerable{System.Double})">
+            <summary>
+            Typical deviation
+            </summary>
+            <param name="list"></param>
+            <returns></returns>
+        </member>
+        <member name="M:mxcd.util.statistics.StatisticsFunctions.TypicalDeviation(System.Collections.Generic.IEnumerable{System.Single})">
+            <summary>
+            Typical deviation
+            </summary>
+            <param name="list"></param>
+            <returns></returns>
+        </member>
+        <member name="M:mxcd.util.statistics.StatisticsFunctions.Median(System.Collections.Generic.IEnumerable{System.Decimal})">
+            <summary>
+            Median
+            </summary>
+            <param name="list"></param>
+            <returns></returns>
+        </member>
+        <member name="M:mxcd.util.statistics.StatisticsFunctions.Median(System.Collections.Generic.IEnumerable{System.Int32})">
+            <summary>
+            Median
+            </summary>
+            <param name="list"></param>
+            <returns></returns>
+        </member>
+        <member name="M:mxcd.util.statistics.StatisticsFunctions.Median(System.Collections.Generic.IEnumerable{System.Double})">
+            <summary>
+            Median
+            </summary>
+            <param name="list"></param>
+            <returns></returns>
+        </member>
+        <member name="M:mxcd.util.statistics.StatisticsFunctions.Median(System.Collections.Generic.IEnumerable{System.Single})">
+            <summary>
+            Median
+            </summary>
+            <param name="list"></param>
+            <returns></returns>
+        </member>
+        <member name="M:mxcd.util.text.StringChecker.IsEmail">
+            <summary>
+            Check if a string is a valid email
+            </summary>
+            <param name = "text"> </param>
+            <returns> If it's a valid email or not </returns>
+        </member>
+        <member name="M:mxcd.util.text.StringChecker.IsPhone">
+            <summary>
+            Check if a string is a valid phone
+            </summary>
+            <param name = "text"> </param>
+            <returns> If it's a valid phone or not </returns>
+        </member>
+        <member name="M:mxcd.util.text.StringChecker.IsMobile">
+            <summary>
+            Check if a string is a valid mobile
+            </summary>
+            <param name = "text"> </param>
+            <returns> If it's a valid phone or not </returns>
+        </member>
+        <member name="M:mxcd.util.text.StringChecker.IsFormatWithMask(System.String)">
+            <summary>
+            Format a string according to a given input mask
+            </summary>
+            <param name = "text"> The input text. </param>
+            <param name = "Mask"> The input mask. eg "A ## - ## - T - ### Z" </param>
+            <example>
+            var s = "aaaaaaaabbbbccccddddeeeeeeeeeeee" .FormatWithMask ("Hello ######## - # A ### - #### - #### - ############ Oww ");
+            "Hello aaaaaaaa-bAbbb-cccc-dddd-eeeeeeeeeeee Oww";
+            var s = "abc" .FormatWithMask ("### - #");
+            "abc-";
+            var s = "" .FormatWithMask ("Hello ######## - # A ### - #### - #### - ############ Oww ");
+            "";
+            </example>
+            <returns> The formatted text </returns>
+        </member>
+        <member name="M:mxcd.util.text.StringChecker.IsIsin">
+            <summary>
+            Check if a string is a valid ISIN (International Securities Identification Number)
+            <param name = "text"> the text to check </param>
+            <returns> If it is a valid ISIN or not ... </returns>
+            </summary>
+        </member>
+        <member name="M:mxcd.util.text.StringChecker.IsUrl">
+            <summary>
+            Find out if the last text is a valid URL
+            </summary>
+            <param name = "text"> </param>
+            <returns> true in case it is </returns>
+        </member>
+        <member name="M:mxcd.util.text.HtmlUtil.RemoveTags">
+            <summary>
+            Removes html tags
+            </summary>
+            <param name = "text"> </param>
+            <example>
+            var htmlText = "<p> Text that remains. <span class =" bold "> Bold. </span> Values ​​</p>;
+            result: Text that is maintained. Bold font. Values
+            </example>
+            <returns> </returns>
+        </member>
+        <member name="T:mxcd.util.text.Text">
+            <summary>
+            Funciones para String
+            </summary>
+        </member>
+        <member name="M:mxcd.util.text.Text.ToString(System.Byte[],mxcd.util.enums.UtilEnums.Encode)">
+            <summary>
+            Convert an array byte to string
+            </summary>
+            <param name="bytes">bytes</param>
+            <param name="encode">encode</param>
+            <returns></returns>
+        </member>
+        <member name="M:mxcd.util.text.Text.ToSentence(System.String)">
+            <summary> Converts a camelCase into a sentence
+            </summary>
+            <example>
+            input : HelloWorld
+            output : Hello World
+            </example>
+            <example>
+            input : BBC
+            output : BBC
+            </example>
+            <param name="text"></param>
+            <returns>una sentencia</returns>
+        </member>
+        <member name="M:mxcd.util.text.Text.Last(System.String,System.Int32)">
+            <summary>
+            Get last positions from a string
+            </summary>
+            <param name="text"></param>
+            <param name="number"></param>
+            <returns>El string resultado</returns>
+        </member>
+        <member name="M:mxcd.util.text.Text.First(System.String,System.Int32)">
+            <summary>
+            Get first positions from a string
+            </summary>
+            <param name="text"></param>
+            <param name="number"></param>
+            <returns>El string resultado</returns>
+        </member>
+        <member name="M:mxcd.util.text.Text.ContainsAny(System.String,System.Char[])">
+            <summary>
+            Find out if a text contains any of the characters passed as parameters
+            </summary>
+            <param name = "text"> </param>
+            <param name = "characters"> </param>
+            <returns> true if it contains any of the Characters </returns>
+        </member>
+        <member name="M:mxcd.util.text.Text.Repeat(System.String,System.Int32)">
+            <summary>
+            Repeat the string as many times as the parameters indicate
+            </summary>
+            <param name = "text"> </param>
+            <param name = "number"> </param>
+            <returns> </returns>
+        </member>
+        <member name="M:mxcd.util.text.Text.ToBytes(System.String,mxcd.util.enums.UtilEnums.Encode)">
+            <summary>
+            Convert a text to a byte array
+            </summary>
+            <param name = "text"> </param>
+            <param name = "codification"> </param>
+            <returns> </returns>
+        </member>
+        <member name="M:mxcd.util.text.Text.Random(System.Int32,System.String)">
+            <summary>
+            Gets a randomize string with size
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:mxcd.util.text.Text.Random(System.String)">
+            <summary>
+            Randomize a text
+            </summary>
+            <param name="text"></param>
+            <returns></returns>
+        </member>
+        <member name="M:mxcd.util.text.Text.GetIndexOf(System.String,System.String)">
+            <summary>
+            Find all the indexes where the searched text appears within the String
+            </summary>
+            <param name = "text"> </param>
+            <param name = "textSearch"> </param>
+            <returns> </returns>
+        </member>
+    </members>
+</doc>
