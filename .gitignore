@@ -7,3 +7,5 @@
 /src/mxcd.util/obj
 /test/mxcd.util.test/bin/Debug/netcoreapp3.0
 /test/mxcd.util.test/obj
+/src/mxcd.util/bin/Release
+/test/mxcd.util.test/bin/Release/netcoreapp3.0

@@ -212,7 +212,7 @@ namespace mxcd.util.sql
                         foreach (var oL in Lista)
                         {
                             string sComa = (sValueList == string.Empty) ? "" : ",";
-                            sValueList += $"{sComa}{oL.ToSql()}";
+                            sValueList += $"{sComa}{oL.ToSql(typeof(object))}";
                         }
                         if (sValueList == string.Empty)
                         {
@@ -244,7 +244,7 @@ namespace mxcd.util.sql
                 case "Equals":
                     propertyValueResult = MethodBody.Arguments.First().ToString();
                     propertyValueResult = propertyValueResult.Replace("\"", "");
-                    propertyValueResult = Convert.ChangeType(propertyValueResult, MethodBody.Method.DeclaringType).ToSql();
+                    propertyValueResult = Convert.ChangeType(propertyValueResult, MethodBody.Method.DeclaringType).ToSql(MethodBody.Method.DeclaringType);
 
                     propertyName = MethodBody.Object.ToString().Split('.').Last();
 
@@ -268,7 +268,7 @@ namespace mxcd.util.sql
 
                 string propertyName = GetPropertyName(body);
                 Expression propertyValue = body.Right;
-                string propertyValueResult = GetValueExpression(propertyValue).ToSql();
+                string propertyValueResult = GetValueExpression(propertyValue).ToSql(typeof(object));
                 string opr = GetOperator((ComparationType)body.NodeType, propertyValueResult);
 
 

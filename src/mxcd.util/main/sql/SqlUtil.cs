@@ -22,7 +22,7 @@ namespace mxcd.util.sql
         /// </summary>
         /// <param name="val">Value</param>
         /// <returns></returns>
-        public static string ToSql(this object val)
+        public static string ToSql(this string val)
         {
             return SqlValue.GetValue(val);
         }
@@ -77,6 +77,16 @@ namespace mxcd.util.sql
         /// <param name="val">Value</param>
         /// <returns></returns>
         public static string ToSql(this float? val)
+        {
+            return SqlValue.GetValue(val);
+        }
+        /// <summary>
+        /// Converts the current value into a sql value
+        /// </summary>
+        /// <param name="val">Value</param>
+        /// <param name="type">Tipo</param>
+        /// <returns></returns>
+        public static string ToSql(this object val, Type type)
         {
             return SqlValue.GetValue(val);
         }
