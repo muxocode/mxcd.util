@@ -62,6 +62,55 @@
             <param name="excludedNames">Fields or props names that will be omitted</param>
             <returns></returns>
         </member>
+        <member name="M:mxcd.util.entity.EntityUtil.Assign``2(``0,``1,System.Boolean,System.Boolean,System.Collections.Generic.IEnumerable{System.String})">
+            <summary>
+            Similar to typescript, assign props or fields from source to destiny
+            </summary>
+            <remarks>Names are case sensitive</remarks>
+            <typeparam name="T">source type</typeparam>
+            <typeparam name="P">target type</typeparam>
+            <param name="entity">source</param>
+            <param name="target">destiny</param>
+            <param name="includeProps">if props are included, default:true</param>
+            <param name="includeFields">if fields are included, default:false</param>
+            <param name="excludedNames">Fields or props names that will be omitted</param>
+            <returns>destiny</returns>
+        </member>
+        <member name="T:mxcd.util.entity.TypeObjectPart">
+            <summary>
+            Type of part of an object
+            </summary>
+        </member>
+        <member name="F:mxcd.util.entity.TypeObjectPart.Property">
+            <summary>
+            Property type
+            </summary>
+        </member>
+        <member name="F:mxcd.util.entity.TypeObjectPart.Field">
+            <summary>
+            Filed type
+            </summary>
+        </member>
+        <member name="T:mxcd.util.entity.IObjectPart">
+            <summary>
+            Part of an object
+            </summary>
+        </member>
+        <member name="P:mxcd.util.entity.IObjectPart.Name">
+            <summary>
+            Name
+            </summary>
+        </member>
+        <member name="P:mxcd.util.entity.IObjectPart.Value">
+            <summary>
+            Value
+            </summary>
+        </member>
+        <member name="P:mxcd.util.entity.IObjectPart.TypePart">
+            <summary>
+            Type
+            </summary>
+        </member>
         <member name="F:mxcd.util.sql.ComparationType.Default">
             
              Default value
@@ -92,7 +141,7 @@
             <param name="val">Value</param>
             <returns></returns>
         </member>
-        <member name="M:mxcd.util.sql.SqlUtil.ToSql(System.Object)">
+        <member name="M:mxcd.util.sql.SqlUtil.ToSql(System.String)">
             <summary>
             Converts the current value into a sql value
             </summary>
@@ -139,6 +188,14 @@
             Converts the current value into a sql value
             </summary>
             <param name="val">Value</param>
+            <returns></returns>
+        </member>
+        <member name="M:mxcd.util.sql.SqlUtil.ToSql(System.Object,System.Type)">
+            <summary>
+            Converts the current value into a sql value
+            </summary>
+            <param name="val">Value</param>
+            <param name="type">Tipo</param>
             <returns></returns>
         </member>
         <member name="M:mxcd.util.sql.SqlUtil.ToSql``2(System.Linq.Expressions.Expression{System.Func{``0,``1}})">

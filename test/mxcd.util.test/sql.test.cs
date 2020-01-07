@@ -26,6 +26,7 @@ namespace mxcd.util.test
 
             string aux = null;
             Assert.True(aux.ToSql() == "null");
+            Assert.True(aux.ToSql(typeof(object)) == "null");
 
             int? num = null;
             Assert.True(num.ToSql() == "null");

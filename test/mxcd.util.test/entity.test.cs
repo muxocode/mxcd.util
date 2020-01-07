@@ -63,5 +63,51 @@ namespace mxcd.util.test
 
             Assert.Throws<UtilException>(() => { user.GetKeysValues<IUser>(); });
         }
+
+        [Fact]
+        public void Assign()
+        {
+            var user = new User
+            {
+                Id = 5,
+                nombre = "Miguel Angel",
+                apelido = "del Campo",
+                birth = new DateTime(1982, 3, 26),
+            };
+
+            var otherUser = new User();
+
+            user.Assign(otherUser);
+
+            Assert.True(otherUser.Id == 5);
+            Assert.True(otherUser.nombre == null);
+            Assert.True(otherUser.apelido == null);
+            Assert.True(otherUser.birth.Date == new DateTime(1982, 3, 26));
+
+            var otherUser1 = new User();
+            (new { Id = 4, birth = new DateTime(1982, 3, 25) }).Assign(otherUser1);
+
+            Assert.True(otherUser1.Id == 4);
+            Assert.True(otherUser1.nombre == null);
+            Assert.True(otherUser1.apelido == null);
+            Assert.True(otherUser1.birth.Date == new DateTime());
+
+            var otherUser2 = new User();
+            user.Assign(otherUser2, false, true);
+
+            Assert.True(otherUser2.Id == default(int));
+            Assert.True(otherUser2.nombre == "Miguel Angel");
+            Assert.True(otherUser2.apelido == "del Campo");
+            Assert.True(otherUser2.birth.Date == new DateTime(1982, 3, 26));
+
+            var otherUser3 = new User();
+            user.Assign(otherUser3, false, true, new string[] { "nombre" });
+
+            Assert.True(otherUser3.Id == default(int));
+            Assert.True(otherUser3.nombre == null);
+            Assert.True(otherUser3.apelido == "del Campo");
+            Assert.True(otherUser3.birth.Date == new DateTime(1982, 3, 26));
+
+        }
     }
 }

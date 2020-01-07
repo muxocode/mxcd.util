@@ -9,7 +9,7 @@
     <PackageProjectUrl>https://github.com/muxocode/mxcd.util</PackageProjectUrl>
     <PackageIconUrl>https://muxocode.com/icon.png</PackageIconUrl>
     <PackageTags>muxocode mxcd util extenssion method</PackageTags>
-    <Version>1.1.1</Version>
+    <Version>1.1.2</Version>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
