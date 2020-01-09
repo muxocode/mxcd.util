@@ -19,11 +19,11 @@ namespace mxcd.util.test
 
             Expression<Func<Paciente, bool>> sResult = x => x.Id == 3;
 
-            Assert.True(sResult.ToSql() == "Id = 3");
+            Assert.True(sResult.ToSql() == "[Id] = 3");
 
             Expression<Func<Paciente, bool>> sResult2 = x => x.Id.Equals(3);
 
-            Assert.True(sResult2.ToSql() == "Id = 3");
+            Assert.True(sResult2.ToSql() == "[Id] = 3");
         }
 
         [Fact]
@@ -32,7 +32,7 @@ namespace mxcd.util.test
 
             Expression<Func<Paciente, bool>> sResult = x => x.Id.Equals(3);
 
-            Assert.True(sResult.ToSql()== "Id = 3");
+            Assert.True(sResult.ToSql()== "[Id] = 3");
         }
 
         [Fact]
@@ -40,7 +40,7 @@ namespace mxcd.util.test
         {
             Expression<Func<Paciente, bool>> sResult = x => x.Id > 3;
 
-            Assert.True(sResult.ToSql()== "Id > 3");
+            Assert.True(sResult.ToSql()== "[Id] > 3");
         }
 
         [Fact]
@@ -49,7 +49,7 @@ namespace mxcd.util.test
 
             Expression<Func<Paciente, bool>> sResult = x => x.Id < 3;
 
-            Assert.True(sResult.ToSql()== "Id < 3");
+            Assert.True(sResult.ToSql()== "[Id] < 3");
         }
 
         [Fact]
@@ -57,7 +57,7 @@ namespace mxcd.util.test
         {
             Expression<Func<Paciente, bool>> sResult = x => x.Id <= 3;
 
-            Assert.True(sResult.ToSql()== "Id <= 3");
+            Assert.True(sResult.ToSql()== "[Id] <= 3");
         }
 
         [Fact]
@@ -65,7 +65,7 @@ namespace mxcd.util.test
         {
             Expression<Func<Paciente, bool>> sResult = x => x.Id >= 3;
 
-            Assert.True(sResult.ToSql()== "Id >= 3");
+            Assert.True(sResult.ToSql()== "[Id] >= 3");
         }
 
         [Fact]
@@ -73,7 +73,7 @@ namespace mxcd.util.test
         {
             Expression<Func<Paciente, bool>> sResult = x => x.Id != 3;
 
-            Assert.True(sResult.ToSql()== "Id <> 3");
+            Assert.True(sResult.ToSql()== "[Id] <> 3");
         }
 
         [Fact]
@@ -81,7 +81,7 @@ namespace mxcd.util.test
         {
             Expression<Func<Paciente, bool>> sResult = x => x.Id != 3 && x.Id == 3;
 
-            Assert.True(sResult.ToSql()== "(Id <> 3) AND (Id = 3)");
+            Assert.True(sResult.ToSql()== "([Id] <> 3) AND ([Id] = 3)");
         }
 
         [Fact]
@@ -89,7 +89,7 @@ namespace mxcd.util.test
         {
             Expression<Func<Paciente, bool>> sResult = x => x.Id != 3 || x.Id == 3;
 
-            Assert.True(sResult.ToSql()== "(Id <> 3) OR (Id = 3)");
+            Assert.True(sResult.ToSql()== "([Id] <> 3) OR ([Id] = 3)");
         }
 
         [Fact]
@@ -97,7 +97,7 @@ namespace mxcd.util.test
         {
             Expression<Func<Paciente, bool>> sResult = x => (x.Id != 3) || (x.Id == 3 && x.Id < 4);
 
-            Assert.True(sResult.ToSql()== "(Id <> 3) OR ((Id = 3) AND (Id < 4))");
+            Assert.True(sResult.ToSql()== "([Id] <> 3) OR (([Id] = 3) AND ([Id] < 4))");
         }
 
         [Fact]
@@ -105,7 +105,7 @@ namespace mxcd.util.test
         {
             Expression<Func<Paciente, bool>> sResult = x => (x.Id != 3) || (x.Id == 3 && x.Id < 4);
 
-            Assert.True(sResult.ToSql()== "(Id <> 3) OR ((Id = 3) AND (Id < 4))");
+            Assert.True(sResult.ToSql()== "([Id] <> 3) OR (([Id] = 3) AND ([Id] < 4))");
         }
 
         [Fact]
@@ -113,11 +113,11 @@ namespace mxcd.util.test
         {
             Expression<Func<Paciente, bool>> sResult = x => x.Nombre == "Ejemplo";
 
-            Assert.True(sResult.ToSql()== "Nombre = N'Ejemplo'");
+            Assert.True(sResult.ToSql()== "[Nombre] = N'Ejemplo'");
 
             Expression<Func<Paciente, bool>> sResult2 = x => x.Nombre.Equals("Ejemplo");
 
-            Assert.True(sResult2.ToSql() == "Nombre = N'Ejemplo'");
+            Assert.True(sResult2.ToSql() == "[Nombre] = N'Ejemplo'");
         }
 
         [Fact]
@@ -125,7 +125,7 @@ namespace mxcd.util.test
         {
             Expression<Func<Paciente, bool>> sResult = x => x.Nombre.StartsWith("e");
 
-            Assert.True(sResult.ToSql()== "Nombre LIKE N'e%'");
+            Assert.True(sResult.ToSql()== "[Nombre] LIKE N'e%'");
         }
 
 
@@ -134,7 +134,7 @@ namespace mxcd.util.test
         {
             Expression<Func<Paciente, bool>> sResult = x => !x.Nombre.StartsWith("e");
 
-            Assert.True(sResult.ToSql()== "Nombre NOT LIKE N'e%'");
+            Assert.True(sResult.ToSql()== "[Nombre] NOT LIKE N'e%'");
         }
 
         [Fact]
@@ -142,7 +142,7 @@ namespace mxcd.util.test
         {
             Expression<Func<Paciente, bool>> sResult = x => !x.Nombre.StartsWith("e");
 
-            Assert.True(sResult.ToSql()== "Nombre NOT LIKE N'e%'");
+            Assert.True(sResult.ToSql()== "[Nombre] NOT LIKE N'e%'");
         }
 
 
@@ -151,7 +151,7 @@ namespace mxcd.util.test
         {
             Expression<Func<Paciente, bool>> sResult = x => x.Nombre.StartsWith("e");
 
-            Assert.True(sResult.ToSql()== "Nombre LIKE N'e%'");
+            Assert.True(sResult.ToSql()== "[Nombre] LIKE N'e%'");
         }
 
         [Fact]
@@ -159,7 +159,7 @@ namespace mxcd.util.test
         {
             Expression<Func<Paciente, bool>> sResult = x => x.Id == 3 && x.Nombre.StartsWith("e");
 
-            Assert.True(sResult.ToSql()== "(Id = 3) AND (Nombre LIKE N'e%')");
+            Assert.True(sResult.ToSql()== "([Id] = 3) AND ([Nombre] LIKE N'e%')");
         }
 
 
@@ -168,7 +168,7 @@ namespace mxcd.util.test
         {
             Expression<Func<Paciente, bool>> sResult = x => x.Nombre.StartsWith("e") || x.Id == 3;
 
-            Assert.True(sResult.ToSql()== "(Nombre LIKE N'e%') OR (Id = 3)");
+            Assert.True(sResult.ToSql()== "([Nombre] LIKE N'e%') OR ([Id] = 3)");
         }
 
         [Fact]
@@ -176,23 +176,23 @@ namespace mxcd.util.test
         {
             Expression<Func<Paciente, bool>> sResult = x => x.MayorEdad;
 
-            Assert.True(sResult.ToSql()== "MayorEdad = 1");
+            Assert.True(sResult.ToSql()== "[MayorEdad] = 1");
 
             sResult = x => x.MayorEdad == true;
 
-            Assert.True(sResult.ToSql()== "MayorEdad = 1");
+            Assert.True(sResult.ToSql()== "[MayorEdad] = 1");
 
             sResult = x => x.MayorEdad != true;
 
-            Assert.True(sResult.ToSql()== "MayorEdad <> 1");
+            Assert.True(sResult.ToSql()== "[MayorEdad] <> 1");
 
             sResult = x => x.MayorEdad.Equals(true);
 
-            Assert.True(sResult.ToSql()== "MayorEdad = 1");
+            Assert.True(sResult.ToSql()== "[MayorEdad] = 1");
 
             sResult = x => x.MayorEdad.Equals(false);
 
-            Assert.True(sResult.ToSql()== "MayorEdad = 0");
+            Assert.True(sResult.ToSql()== "[MayorEdad] = 0");
         }
 
         [Fact]
@@ -200,15 +200,15 @@ namespace mxcd.util.test
         {
             Expression<Func<Paciente, bool>> sResult = x => !x.MayorEdad;
 
-            Assert.True(sResult.ToSql()== "NOT (MayorEdad = 1)");
+            Assert.True(sResult.ToSql()== "NOT ([MayorEdad] = 1)");
 
             sResult = x => x.MayorEdad == false;
 
-            Assert.True(sResult.ToSql()== "MayorEdad = 0");
+            Assert.True(sResult.ToSql()== "[MayorEdad] = 0");
 
             sResult = x => x.MayorEdad != false;
 
-            Assert.True(sResult.ToSql()== "MayorEdad <> 0");
+            Assert.True(sResult.ToSql()== "[MayorEdad] <> 0");
         }
 
         [Fact]
@@ -216,7 +216,7 @@ namespace mxcd.util.test
         {
             Expression<Func<Paciente, bool>> sResult = x => x.MayorEdad && x.Id == 3 || x.Nombre.EndsWith("a");
 
-            Assert.True(sResult.ToSql()== "((MayorEdad = 1) AND (Id = 3)) OR (Nombre LIKE N'%a')");
+            Assert.True(sResult.ToSql()== "(([MayorEdad] = 1) AND ([Id] = 3)) OR ([Nombre] LIKE N'%a')");
         }
 
         [Fact]
@@ -224,7 +224,7 @@ namespace mxcd.util.test
         {
             Expression<Func<Paciente, bool>> sResult = x => !(x.MayorEdad && x.Id == 3 || x.Nombre.EndsWith("a"));
 
-            Assert.True(sResult.ToSql()== "NOT (((MayorEdad = 1) AND (Id = 3)) OR (Nombre LIKE N'%a'))");
+            Assert.True(sResult.ToSql()== "NOT ((([MayorEdad] = 1) AND ([Id] = 3)) OR ([Nombre] LIKE N'%a'))");
         }
 
         [Fact]
@@ -232,7 +232,7 @@ namespace mxcd.util.test
         {
             Expression<Func<Paciente, bool>> sResult = x => !(x.MayorEdad && x.Id == 3) || x.Nombre.EndsWith("a") && !(x.Id > 9);
 
-            Assert.True(sResult.ToSql()== "(NOT ((MayorEdad = 1) AND (Id = 3))) OR ((Nombre LIKE N'%a') AND (NOT (Id > 9)))");
+            Assert.True(sResult.ToSql()== "(NOT (([MayorEdad] = 1) AND ([Id] = 3))) OR (([Nombre] LIKE N'%a') AND (NOT ([Id] > 9)))");
         }
 
 
@@ -241,7 +241,7 @@ namespace mxcd.util.test
         {
             Expression<Func<Paciente, bool>> sResult = x => x.Nombre.Contains("a");
 
-            Assert.True(sResult.ToSql()== "Nombre LIKE N'%a%'");
+            Assert.True(sResult.ToSql()== "[Nombre] LIKE N'%a%'");
         }
 
         [Fact]
@@ -251,7 +251,7 @@ namespace mxcd.util.test
 
             Expression<Func<Paciente, bool>> sResult = x => aIds.Contains(x.Id);
             var result = sResult.ToSql();
-            Assert.True(result == "Id IN (1,2,3)");
+            Assert.True(result == "[Id] IN (1,2,3)");
         }
 
         [Fact]
@@ -263,7 +263,7 @@ namespace mxcd.util.test
 
             Expression<Func<Paciente, bool>> sResult = x => aIds.Contains(x.Id);
 
-            Assert.True(sResult.ToSql()== "Id IN (1,2,3)");
+            Assert.True(sResult.ToSql()== "[Id] IN (1,2,3)");
         }
 
         [Fact]
@@ -280,11 +280,11 @@ namespace mxcd.util.test
 
             Expression<Func<Paciente, bool>> sResult = x => aIds.Contains(x.Id);
 
-            Assert.True(sResult.ToSql()== "Id IN (1,2,3)");
+            Assert.True(sResult.ToSql()== "[Id] IN (1,2,3)");
 
             sResult = x => aUsuarios.Select(y => y.Id).Contains(x.Id);
 
-            Assert.True(sResult.ToSql()== "Id IN (1,2,3)");
+            Assert.True(sResult.ToSql()== "[Id] IN (1,2,3)");
         }
 
         [Fact]
@@ -295,8 +295,8 @@ namespace mxcd.util.test
             var aIds = aUsuarios.Select(x => x.Id);
 
             Expression<Func<Paciente, bool>> sResult = x => aIds.Contains(x.Id);
-
-            Assert.True(sResult.ToSql()== "1 = 0");
+            var sRes = sResult.ToSql();
+            Assert.True(sRes == "1 = 0");
 
         }
 
@@ -309,7 +309,7 @@ namespace mxcd.util.test
 
             Expression<Func<Paciente, bool>> sResult = x => aIds.Contains(x.Id);
 
-            Assert.True(sResult.ToSql()== "Id IN (1,2,3)");
+            Assert.True(sResult.ToSql()== "[Id] IN (1,2,3)");
         }
 
         [Fact]
@@ -319,7 +319,7 @@ namespace mxcd.util.test
 
             Expression<Func<Paciente, bool>> sResult = x => !aIds.Contains(x.Id);
 
-            Assert.True(sResult.ToSql()== "Id NOT IN (1,2,3)");
+            Assert.True(sResult.ToSql()== "[Id] NOT IN (1,2,3)");
         }
 
         [Fact]
@@ -329,7 +329,7 @@ namespace mxcd.util.test
 
             Expression<Func<Paciente, bool>> sResult = x => aIds.Contains(x.Nombre);
 
-            Assert.True(sResult.ToSql()== "Nombre IN (N'a',N'b',N'c',N'd')");
+            Assert.True(sResult.ToSql()== "[Nombre] IN (N'a',N'b',N'c',N'd')");
         }
 
         [Fact]
@@ -339,7 +339,7 @@ namespace mxcd.util.test
 
             Expression<Func<Paciente, bool>> sResult = x => !aIds.Contains(x.Nombre);
 
-            Assert.True(sResult.ToSql()== "Nombre NOT IN (N'a',N'b',N'c',N'd')");
+            Assert.True(sResult.ToSql()== "[Nombre] NOT IN (N'a',N'b',N'c',N'd')");
         }
 
         [Fact]
@@ -351,7 +351,7 @@ namespace mxcd.util.test
             Expression<Func<Paciente, bool>> sResult = x => aIds.Contains(x.Id) || aIdStrings.Contains(x.Nombre);
 
 
-            Assert.True(sResult.ToSql()== "(Id IN (1,2,3)) OR (Nombre IN (N'a',N'b',N'c',N'd'))");
+            Assert.True(sResult.ToSql()== "([Id] IN (1,2,3)) OR ([Nombre] IN (N'a',N'b',N'c',N'd'))");
         }
 
         [Fact]
@@ -367,7 +367,7 @@ namespace mxcd.util.test
         {
             Expression<Func<Paciente, bool>> sResult = x => x.Nombre == null;
 
-            Assert.True(sResult.ToSql()== "Nombre IS null");
+            Assert.True(sResult.ToSql()== "[Nombre] IS null");
         }
 
         [Fact]
@@ -375,7 +375,7 @@ namespace mxcd.util.test
         {
             Expression<Func<Paciente, bool>> sResult = x => x.Nombre != null;
 
-            Assert.True(sResult.ToSql()== "Nombre IS NOT null");
+            Assert.True(sResult.ToSql()== "[Nombre] IS NOT null");
         }
 
         [Fact]
@@ -383,11 +383,11 @@ namespace mxcd.util.test
         {
             Expression<Func<Paciente, bool>> sResult = x => x.Fecha == DateTime.Now;
 
-            Assert.True(sResult.ToSql()== $"Fecha = '{DateTime.Now.ToString("yyyyMMdd HH:mm")}'");
+            Assert.True(sResult.ToSql()== $"[Fecha] = '{DateTime.Now.ToString("yyyyMMdd HH:mm")}'");
 
             sResult = x => x.Saldo == 30;
 
-            Assert.True(sResult.ToSql()== "Saldo = 30");
+            Assert.True(sResult.ToSql()== "[Saldo] = 30");
         }
 
         Expression<Func<Paciente,T>> CreateSelect<T>(Expression<Func<Paciente, T>> expr)
@@ -399,25 +399,33 @@ namespace mxcd.util.test
         public void ExpressionNames()
         {
             var sResult = CreateSelect(x => x.Id).ToSql();
-            Assert.True(sResult== "Id");
+            Assert.True(sResult== "[Id]");
 
             var sResult21 = CreateSelect<object>(x => x.MayorEdad).ToSql();
-            Assert.True(sResult21 == "MayorEdad");
+            Assert.True(sResult21 == "[MayorEdad]");
 
             var sResult2 = CreateSelect(x => new { x.Id, x.MayorEdad }).ToSql();
-            Assert.True(sResult2== "Id, MayorEdad");
+            Assert.True(sResult2== "[Id], [MayorEdad]");
 
             var sResult3 = CreateSelect(x => x.Nombre).ToSql();
-            Assert.True(sResult3== "Nombre");
+            Assert.True(sResult3== "[Nombre]");
 
             var sResult7 = CreateSelect(x => x.Fecha).ToSql();
-            Assert.True(sResult7== "Fecha");
+            Assert.True(sResult7== "[Fecha]");
 
             var sResult9 = CreateSelect(x=> x.Nombre).ToSql();
-            Assert.True(sResult9== "Nombre");
+            Assert.True(sResult9== "[Nombre]");
 
             var sResult10 = CreateSelect(x => x.Saldo).ToSql();
-            Assert.True(sResult10== "Saldo");
+            Assert.True(sResult10== "[Saldo]");
+        }
+
+        [Fact]
+        public void BetweenProperties()
+        {
+            Expression<Func<Paciente, bool>> eResult = x => x.Id == x.Edad;
+            var sResult = eResult.ToSql();
+
         }
     }
 }

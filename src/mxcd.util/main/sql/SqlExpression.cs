@@ -24,15 +24,15 @@ namespace mxcd.util.sql
 
                 if (expression.Body is MemberExpression member)
                 {
-                    result = member.Member.Name;
+                    result = $"[{member.Member.Name}]";
                 }
                 if (expression.Body is NewExpression newMember)
                 {
-                    result = String.Join(", ", newMember.Members.Select(x => x.Name));
+                    result = $"[{String.Join("], [", newMember.Members.Select(x => x.Name))}]";
                 }
                 if (expression.Body is UnaryExpression unary)
                 {
-                    result = unary.Operand.ToString().Split('.').Last();
+                    result = $"[{unary.Operand.ToString().Split('.').Last()}]";
                 }
 
                 return result ?? throw new InvalidOperationException("Expression not compatible");
@@ -155,7 +155,7 @@ namespace mxcd.util.sql
 
             propertyName = Body.Member.Name;
 
-            return string.Format("{0} {1} {2}", propertyName, "=", propertyValueResult);
+            return string.Format("[{0}] {1} {2}", propertyName, "=", propertyValueResult);
         }
 
         private static string ToSql(MethodCallExpression MethodBody)
@@ -174,7 +174,7 @@ namespace mxcd.util.sql
 
                     propertyName = MethodBody.Object.ToString().Split('.').Last();
 
-                    sResult = string.Format("{0} {1} {2}", propertyName, "LIKE", propertyValueResult);
+                    sResult = string.Format("[{0}] {1} {2}", propertyName, "LIKE", propertyValueResult);
 
                     break;
                 case "EndsWith":
@@ -185,7 +185,7 @@ namespace mxcd.util.sql
 
                     propertyName = MethodBody.Object.ToString().Split('.').Last();
 
-                    sResult = string.Format("{0} {1} {2}", propertyName, "LIKE", propertyValueResult);
+                    sResult = string.Format("[{0}] {1} {2}", propertyName, "LIKE", propertyValueResult);
 
                     break;
 
@@ -220,7 +220,7 @@ namespace mxcd.util.sql
                         }
                         else
                         {
-                            sResult = string.Format("{0} {1} ({2})", propertyName, "IN", sValueList);
+                            sResult = string.Format("[{0}] {1} ({2})", propertyName, "IN", sValueList);
 
                         }
 
@@ -234,7 +234,7 @@ namespace mxcd.util.sql
 
                         propertyName = MethodBody.Object.ToString().Split('.').Last();
 
-                        sResult = string.Format("{0} {1} {2}", propertyName, "LIKE", propertyValueResult);
+                        sResult = string.Format("[{0}] {1} {2}", propertyName, "LIKE", propertyValueResult);
                     }
                     else
                     {
@@ -248,7 +248,7 @@ namespace mxcd.util.sql
 
                     propertyName = MethodBody.Object.ToString().Split('.').Last();
 
-                    sResult = string.Format("{0} {1} {2}", propertyName, "=", propertyValueResult);
+                    sResult = string.Format("[{0}] {1} {2}", propertyName, "=", propertyValueResult);
                     break;
             }
 
@@ -266,14 +266,32 @@ namespace mxcd.util.sql
             if (body.NodeType != ExpressionType.AndAlso && body.NodeType != ExpressionType.OrElse)
             {
 
-                string propertyName = GetPropertyName(body);
+                string propertyName = GetPropertyName(body.Left);
                 Expression propertyValue = body.Right;
-                string propertyValueResult = GetValueExpression(propertyValue).ToSql(typeof(object));
+                string propertyValueResult;
+                switch (propertyValue.NodeType)
+                {
+                    case ExpressionType.Constant:
+                        propertyValueResult = GetValueExpression(propertyValue).ToSql(typeof(object));
+                        break;
+                    case ExpressionType.MemberAccess:
+                        if(body.Right.Type== typeof(DateTime))
+                        {
+                            propertyValueResult = GetValueExpression(propertyValue).ToSql(typeof(object));
+                        }
+                        else
+                        {
+                            propertyValueResult = $"[{GetPropertyName(body.Right)}]";
+                        }
+                        break;
+                    default:
+                        throw new InvalidOperationException();
+                }
+
                 string opr = GetOperator((ComparationType)body.NodeType, propertyValueResult);
 
 
-
-                return string.Format("{0} {1} {2}", propertyName, opr, propertyValueResult);
+                return string.Format("[{0}] {1} {2}", propertyName, opr, propertyValueResult);
             }
             else
             {
@@ -315,20 +333,21 @@ namespace mxcd.util.sql
 
         private static object GetValueExpression(Expression member)
         {
-            var objectMember = Expression.Convert(member, typeof(object));
 
-            var getterLambda = Expression.Lambda<Func<object>>(objectMember);
+                var objectMember = Expression.Convert(member, typeof(object));
 
-            var getter = getterLambda.Compile();
+                var getterLambda = Expression.Lambda<Func<object>>(objectMember);
 
-            return getter();
+                var getter = getterLambda.Compile();
+
+                return getter();
         }
 
-        private static string GetPropertyName(BinaryExpression body)
+        private static string GetPropertyName(Expression body)
         {
-            string propertyName = body.Left.ToString().Split(new char[] { '.' })[1];
+            string propertyName = body.ToString().Split(new char[] { '.' })[1];
 
-            if (body.Left.NodeType == ExpressionType.Convert)
+            if (body.NodeType == ExpressionType.Convert)
             {
                 propertyName = propertyName.Replace(")", string.Empty);
             }

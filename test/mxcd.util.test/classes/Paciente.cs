@@ -11,5 +11,7 @@ namespace mxcd.util.test.classes
         public bool MayorEdad { get; set; }
         public DateTime Fecha { get; set; }
         public decimal Saldo { get; set; }
+        public int Edad { get; set; }
+
     }
 }
