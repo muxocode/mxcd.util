@@ -275,13 +275,13 @@ namespace mxcd.util.sql
                         propertyValueResult = GetValueExpression(propertyValue).ToSql(typeof(object));
                         break;
                     case ExpressionType.MemberAccess:
-                        if(body.Right.Type== typeof(DateTime))
+                        try
                         {
                             propertyValueResult = GetValueExpression(propertyValue).ToSql(typeof(object));
                         }
-                        else
+                        catch
                         {
-                            propertyValueResult = $"[{GetPropertyName(body.Right)}]";
+                            propertyValueResult = $"[{GetPropertyName(propertyValue)}]";
                         }
                         break;
                     default:
@@ -334,13 +334,13 @@ namespace mxcd.util.sql
         private static object GetValueExpression(Expression member)
         {
 
-                var objectMember = Expression.Convert(member, typeof(object));
+            var objectMember = Expression.Convert(member, typeof(object));
 
-                var getterLambda = Expression.Lambda<Func<object>>(objectMember);
+            var getterLambda = Expression.Lambda<Func<object>>(objectMember);
 
-                var getter = getterLambda.Compile();
+            var getter = getterLambda.Compile();
 
-                return getter();
+            return getter();
         }
 
         private static string GetPropertyName(Expression body)

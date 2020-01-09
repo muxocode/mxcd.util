@@ -425,6 +425,12 @@ namespace mxcd.util.test
         {
             Expression<Func<Paciente, bool>> eResult = x => x.Id == x.Edad;
             var sResult = eResult.ToSql();
+            Assert.True(sResult == "[Id] = [Edad]");
+
+            var oPaciente = new Paciente() { Id = 3 };
+            Expression<Func<Paciente, bool>> eResult2 = x => x.Id == oPaciente.Id;
+            var sResult2 = eResult2.ToSql();
+            Assert.True(sResult2 == "[Id] = 3");
 
         }
     }
